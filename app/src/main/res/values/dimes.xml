@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Define the card margin -->
+    <dimen name="card_margin">16dp</dimen>
+
+    <!-- Define the card corner radius -->
+    <dimen name="card_cornerRadius">8dp</dimen>
+</resources>

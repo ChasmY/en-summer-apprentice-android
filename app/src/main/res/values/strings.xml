@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">TicketingApp</string>
+    <string name="events">Events</string>
+    <string name="orders">Orders</string>
+    <string name="buy">Buy</string>
+    <string name="enter_quantity">Enter quantity</string>
+    <string name="exit_button">Exit\n</string>
 </resources>

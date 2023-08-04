@@ -1,0 +1,32 @@
+        // Initialize the RecyclerView
+//        recyclerView = findViewById(R.id.myRecyclerView);
+//        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+//
+//        // Create and set the EventAdapter on the RecyclerView
+//        eventAdapter = new EventAdapter(this, events);
+//        recyclerView.setAdapter(eventAdapter);
+//
+//        // Fetch the data and update the adapter
+//        EventApi eventApi = RetrofitService.getEventApi();
+//        Call<List<EventDto>> call = eventApi.getAllEvents();
+//
+//        call.enqueue(new Callback<List<EventDto>>() {
+//            @Override
+//            public void onResponse(Call<List<EventDto>> call, Response<List<EventDto>> response) {
+//                if (response.isSuccessful()) {
+//                    List<EventDto> eventList = response.body();
+//                    Log.d("EventActivity", "Number of events received: " + eventList.size());
+//                    // Update the data in the adapter and notify the RecyclerView of the data change
+//                    eventAdapter.setEventList(eventList);
+//                    eventAdapter.notifyDataSetChanged();
+//                } else {
+//                    Log.d("EventActivity", "Failed to fetch events: " + response.message());
+//                    Toast.makeText(EventActivity.this, "Failed to fetch events", Toast.LENGTH_SHORT).show();
+//                }
+//            }
+//
+//            @Override
+//            public void onFailure(Call<List<EventDto>> call, Throwable t) {
+//                Toast.makeText(EventActivity.this, "Failed: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+//            }
+//        });
