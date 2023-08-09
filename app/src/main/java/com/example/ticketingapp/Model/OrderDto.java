@@ -1,21 +1,17 @@
 package com.example.ticketingapp.Model;
 
+import androidx.annotation.NonNull;
+
 import java.time.LocalDateTime;
 
 public class OrderDto {
-    private int orderId;
+    private String clientName;
+    private String eventName;
     private int numberOfTickets;
     private double totalPrice;
     private String orderedAt;
-    private String ticketType;
+    private String ticketCategory;
 
-    public int getOrderId() {
-        return orderId;
-    }
-
-    public void setOrderId(int orderId) {
-        this.orderId = orderId;
-    }
 
     public int getNumberOfTickets() {
         return numberOfTickets;
@@ -41,19 +37,48 @@ public class OrderDto {
         this.orderedAt = orderedAt;
     }
 
-    public String getTicketType() {
-        return ticketType;
+    public String getTicketCategory() {
+        return ticketCategory;
     }
 
-    public void setTicketType(String ticketType) {
-        this.ticketType = ticketType;
+    public void setTicketCategory(String ticketCategory) {
+        this.ticketCategory = ticketCategory;
     }
 
-    public OrderDto(int orderId, int numberOfTickets, int totalPrice, String orderedAt, String ticketType) {
-        this.orderId = orderId;
+    public String getEventName() {
+        return eventName;
+    }
+
+    public void setEventName(String event) {
+        this.eventName = event;
+    }
+
+    public String getClientName() {
+        return clientName;
+    }
+
+    public void setClientName(String clientName) {
+        this.clientName = clientName;
+    }
+
+    public OrderDto(){}
+
+    public OrderDto(String eventName, int numberOfTickets, int totalPrice, String orderedAt, String ticketCategory) {
+        this.eventName = eventName;
         this.numberOfTickets = numberOfTickets;
         this.totalPrice = totalPrice;
         this.orderedAt = orderedAt;
-        this.ticketType = ticketType;
+        this.ticketCategory = ticketCategory;
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        return "Order{" +
+                ", orderEventName='" + eventName + '\'' +
+                ", nrTickets=" + numberOfTickets +
+                ", price=" + totalPrice +
+                ", ordered at=" + orderedAt +
+                '}';
     }
 }

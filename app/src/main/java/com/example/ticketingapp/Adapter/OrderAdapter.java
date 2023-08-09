@@ -44,8 +44,9 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderViewHol
         OrderDto order = orders.get(position);
 
         // Set the data to the views in the order_recycler.xml layout
-        holder.orderId.setText(String.valueOf(order.getOrderId()));
-        holder.ticketType.setText(order.getTicketType());
+        holder.clientName.setText(order.getClientName());
+        holder.eventName.setText(String.valueOf(order.getEventName()));
+        holder.ticketType.setText(String.valueOf(order.getTicketCategory()));
         holder.numberOfTickets.setText(String.valueOf(order.getNumberOfTickets()));
         holder.totalPrice.setText(String.valueOf(order.getTotalPrice()));
         holder.orderedAt.setText(order.getOrderedAt());
@@ -69,11 +70,12 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderViewHol
     }
 
     public class OrderViewHolder extends RecyclerView.ViewHolder {
-        public TextView orderId, numberOfTickets, totalPrice, orderedAt, ticketType;
+        public TextView clientName, eventName, numberOfTickets, totalPrice, orderedAt, ticketType;
         public Button deleteButton, editButton;
         public OrderViewHolder(@NonNull View itemView) {
             super(itemView);
-            orderId = itemView.findViewById(R.id.textView3);
+            clientName=itemView.findViewById(R.id.textView3);
+            eventName = itemView.findViewById(R.id.textView15);
             numberOfTickets = itemView.findViewById(R.id.textView7);
             totalPrice = itemView.findViewById(R.id.textView8);
             orderedAt = itemView.findViewById(R.id.textView9);

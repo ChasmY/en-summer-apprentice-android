@@ -6,24 +6,27 @@ import com.google.gson.GsonBuilder;
 
 import java.time.LocalDateTime;
 
+import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitService {
 
-    private static Retrofit retrofit;
+    private static Retrofit retrofit = null;
 
-    public static EventApi getEventApi() {
+    public static Retrofit getEventApi() {
         if (retrofit == null) {
             Gson gson = new GsonBuilder()
-                    .registerTypeAdapter(LocalDateTime.class, new DateTimeAdapter())
+                    .setLenient()
                     .create();
+            OkHttpClient.Builder okHttpClient = new OkHttpClient.Builder();
 
             retrofit = new Retrofit.Builder()
-                    .baseUrl("http://172.16.98.65:8080")
+                    .baseUrl("http://172.16.99.97:7042/api/")
+                    .client(okHttpClient.build())
                     .addConverterFactory(GsonConverterFactory.create(gson))
                     .build();
         }
-        return retrofit.create(EventApi.class);
+        return retrofit;
     }
 }

@@ -7,18 +7,18 @@ import java.util.List;
 public class Event {
 
     private String eventName;
-    private LocalDateTime startDate;
-    private LocalDateTime endDate;
+    private String startDate;
+    private String endDate;
     private String description;
     private String image = "@drawable/banner";
 
     public String getEventName() {
         return eventName;
     }
-    public LocalDateTime getStartDate() {
+    public String getStartDate() {
         return startDate;
     }
-    public LocalDateTime getEndDate() {
+    public String getEndDate() {
         return endDate;
     }
     public String getDescription() {
@@ -28,13 +28,6 @@ public class Event {
 
     public String getImage() {
         return image;
-    }
-
-    public Event(String eventName, String description){
-
-        this.eventName = eventName;
-        this.description =description;
-        this.image = "@drawable/banner";
     }
 
 }
