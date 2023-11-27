@@ -1,6 +1,5 @@
 package com.example.ticketingapp.Service;
 
-import com.example.ticketingapp.Adapter.DateTimeAdapter;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -22,7 +21,7 @@ public class RetrofitService {
             OkHttpClient.Builder okHttpClient = new OkHttpClient.Builder();
 
             retrofit = new Retrofit.Builder()
-                    .baseUrl("http://172.16.99.97:7042/api/")
+                    .baseUrl("http://10.0.2.2:7042/api/")
                     .client(okHttpClient.build())
                     .addConverterFactory(GsonConverterFactory.create(gson))
                     .build();

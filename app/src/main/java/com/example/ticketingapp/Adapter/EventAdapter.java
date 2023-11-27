@@ -1,5 +1,6 @@
 package com.example.ticketingapp.Adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -14,14 +15,13 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.ticketingapp.Model.Event;
-import com.example.ticketingapp.Model.EventDto;
+import com.example.ticketingapp.Model.Dto.EventDto;
 import com.example.ticketingapp.R;
+import com.example.ticketingapp.ViewHolder.EventViewHolder;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHolder> {
+public class EventAdapter extends RecyclerView.Adapter<EventViewHolder> {
     Context context;
     private List<EventDto> eventList;
 
@@ -35,11 +35,13 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
     public EventViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.recycler_view_row, parent, false);
-        return new EventViewHolder(itemView);
+        return new EventViewHolder(itemView );
+//        return new EventViewHolder(LayoutInflater.from(context).inflate(R.layout.recycler_view_row,parent,false));
+
     }
 
     @Override
-    public void onBindViewHolder(@NonNull EventViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull EventViewHolder holder, @SuppressLint("ReciclerView") int position) {
         EventDto event = eventList.get(position);
         Log.d("EventAdapterAdded", "Event name: " + event.getName());
 
@@ -48,6 +50,10 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
         holder.eventDescriptionTextView.setText(event.getDescription());
         holder.startDateTextView.setText(event.getStartDate());
         holder.endDateTextView.setText(event.getEndDate());
+
+        int imageResourceId = event.getEventImage(context, event.getName());
+        holder.eventImage.setImageResource(imageResourceId);
+
         holder.buyButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -86,16 +92,5 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
         alertDialog.show();
     }
 
-    public class EventViewHolder extends RecyclerView.ViewHolder {
-        public TextView eventNameTextView, eventDescriptionTextView, startDateTextView, endDateTextView, venueTextView;
-        public Button buyButton;
-        public EventViewHolder(@NonNull View itemView) {
-            super(itemView);
-            eventNameTextView = itemView.findViewById(R.id.textView);
-            eventDescriptionTextView = itemView.findViewById(R.id.textView4);
-            startDateTextView = itemView.findViewById(R.id.textView20);
-            endDateTextView = itemView.findViewById(R.id.textView23);
-            buyButton = itemView.findViewById(R.id.buyButton);
-        }
-    }
+
 }

@@ -10,8 +10,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.ticketingapp.Adapter.EventAdapter;
-import com.example.ticketingapp.Model.EventDto;
-import com.example.ticketingapp.Service.EventService;
+import com.example.ticketingapp.Model.Dto.EventDto;
+import com.example.ticketingapp.Service.ApiService;
 import com.example.ticketingapp.Service.RetrofitService;
 
 import java.util.ArrayList;
@@ -26,7 +26,7 @@ public class EventActivity extends AppCompatActivity {
     private ArrayList<EventDto> events = new ArrayList<>();
     private RecyclerView recyclerView;
     private EventAdapter eventAdapter;
-    private EventService eventService;
+    private ApiService apiService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,8 +41,8 @@ public class EventActivity extends AppCompatActivity {
     }
 
     public void getEvents(){
-        eventService = RetrofitService.getEventApi().create(EventService.class);
-        Call<List<EventDto>> call = eventService.getAllEvents();
+        apiService = RetrofitService.getEventApi().create(ApiService.class);
+        Call<List<EventDto>> call = apiService.getAllEvents();
         call.enqueue(new Callback<List<EventDto>>() {
             @SuppressLint("NotifyDataSetChanged")
             @Override
@@ -69,6 +69,7 @@ public class EventActivity extends AppCompatActivity {
         eventAdapter = new EventAdapter(this, events);
         recyclerView.setAdapter(eventAdapter);
     }
+
 
 
 }

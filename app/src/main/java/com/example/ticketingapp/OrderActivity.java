@@ -10,9 +10,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.ticketingapp.Adapter.OrderAdapter;
-import com.example.ticketingapp.Model.OrderDto;
-import com.example.ticketingapp.Service.EventService;
-import com.example.ticketingapp.Service.OrderService;
+import com.example.ticketingapp.Model.Dto.OrderDto;
+import com.example.ticketingapp.Service.ApiService;
 import com.example.ticketingapp.Service.RetrofitService;
 
 import java.util.ArrayList;
@@ -27,7 +26,7 @@ public class OrderActivity extends AppCompatActivity {
     private ArrayList<OrderDto> orders = new ArrayList<>();
     private RecyclerView recyclerView;
     private OrderAdapter orderAdapter;
-    private OrderService orderService;
+    private ApiService apiService;
 
 
     @Override
@@ -40,13 +39,14 @@ public class OrderActivity extends AppCompatActivity {
     }
 
     public void getOrders(){
-        orderService = RetrofitService.getEventApi().create(OrderService.class);
-        Call<List<OrderDto>> call = orderService.getAllOrders();
+        apiService = RetrofitService.getEventApi().create(ApiService.class);
+        Call<List<OrderDto>> call = apiService.getAllOrders();
         call.enqueue(new Callback<List<OrderDto>>() {
             @SuppressLint("NotifyDataSetChanged")
             @Override
             public void onResponse(Call<List<OrderDto>> call, Response<List<OrderDto>> response) {
                 Log.d("call", "Status code: " + response.code());
+
                 orders.clear();
                 if(response.body() != null){
                     orders.addAll(response.body());

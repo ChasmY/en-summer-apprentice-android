@@ -1,4 +1,4 @@
-package com.example.ticketingapp.Model;
+package com.example.ticketingapp.Model.Dto;
 
 import androidx.annotation.NonNull;
 

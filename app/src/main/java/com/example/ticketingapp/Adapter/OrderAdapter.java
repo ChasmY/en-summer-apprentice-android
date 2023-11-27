@@ -6,19 +6,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Spinner;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.ticketingapp.Model.EventDto;
-import com.example.ticketingapp.Model.OrderDto;
+import com.example.ticketingapp.Model.Dto.OrderDto;
 import com.example.ticketingapp.R;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderViewHolder>{
@@ -42,11 +37,11 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderViewHol
     @Override
     public void onBindViewHolder(@NonNull OrderAdapter.OrderViewHolder holder, int position) {
         OrderDto order = orders.get(position);
-
+        Log.d("ticketType", "Ticket Type" + order.getTicketCategory());
         // Set the data to the views in the order_recycler.xml layout
         holder.clientName.setText(order.getClientName());
         holder.eventName.setText(String.valueOf(order.getEventName()));
-        holder.ticketType.setText(String.valueOf(order.getTicketCategory()));
+        holder.ticketType.setText(order.getTicketCategory());
         holder.numberOfTickets.setText(String.valueOf(order.getNumberOfTickets()));
         holder.totalPrice.setText(String.valueOf(order.getTotalPrice()));
         holder.orderedAt.setText(order.getOrderedAt());
