@@ -35,8 +35,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventViewHolder> {
     public EventViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.recycler_view_row, parent, false);
-        return new EventViewHolder(itemView );
-//        return new EventViewHolder(LayoutInflater.from(context).inflate(R.layout.recycler_view_row,parent,false));
+        return new EventViewHolder(itemView);
 
     }
 
@@ -73,7 +72,6 @@ public class EventAdapter extends RecyclerView.Adapter<EventViewHolder> {
         builder.setView(dialogView);
         AlertDialog alertDialog = builder.create();
 
-        // Get references to views inside the dialog
         Spinner dropdownSpinner = dialogView.findViewById(R.id.dialogDropDownSpinner);
         EditText quantityInput = dialogView.findViewById(R.id.dialogNumberInput);
         Button buyButton = dialogView.findViewById(R.id.buyButton);

@@ -2,15 +2,18 @@ package com.example.ticketingapp.Model.Dto;
 
 import androidx.annotation.NonNull;
 
+import com.example.ticketingapp.Model.Customer;
+import com.example.ticketingapp.Model.TicketCategory;
+
 import java.time.LocalDateTime;
 
 public class OrderDto {
-    private String clientName;
+    private Customer customer;
     private String eventName;
     private int numberOfTickets;
     private double totalPrice;
     private String orderedAt;
-    private String ticketCategory;
+    private TicketCategory ticketCategory;
 
 
     public int getNumberOfTickets() {
@@ -37,11 +40,11 @@ public class OrderDto {
         this.orderedAt = orderedAt;
     }
 
-    public String getTicketCategory() {
+    public TicketCategory getTicketCategory() {
         return ticketCategory;
     }
 
-    public void setTicketCategory(String ticketCategory) {
+    public void setTicketCategory(TicketCategory ticketCategory) {
         this.ticketCategory = ticketCategory;
     }
 
@@ -53,17 +56,18 @@ public class OrderDto {
         this.eventName = event;
     }
 
-    public String getClientName() {
-        return clientName;
+    public Customer getClient() {
+        return customer;
     }
 
-    public void setClientName(String clientName) {
-        this.clientName = clientName;
+    public void setClientName(Customer clientName) {
+        this.customer = clientName;
     }
 
     public OrderDto(){}
 
-    public OrderDto(String eventName, int numberOfTickets, int totalPrice, String orderedAt, String ticketCategory) {
+    public OrderDto(Customer customer, String eventName, int numberOfTickets, int totalPrice, String orderedAt, TicketCategory ticketCategory) {
+        this.customer = customer;
         this.eventName = eventName;
         this.numberOfTickets = numberOfTickets;
         this.totalPrice = totalPrice;
@@ -75,6 +79,7 @@ public class OrderDto {
     @Override
     public String toString() {
         return "Order{" +
+                ", customerName='" + customer + '\'' +
                 ", orderEventName='" + eventName + '\'' +
                 ", nrTickets=" + numberOfTickets +
                 ", price=" + totalPrice +

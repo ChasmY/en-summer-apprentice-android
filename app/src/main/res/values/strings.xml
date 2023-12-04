@@ -15,4 +15,6 @@
     <string name="numberoftickets">numberOfTickets</string>
     <string name="ordered">Ordered</string>
     <string name="orderedat">orderedAt</string>
+    <string name="delete">Delete</string>
+    <string name="edit">Edit</string>
 </resources>

@@ -68,6 +68,7 @@ public class EventDto implements Serializable {
     }
 
 
+    @SuppressLint("DiscouragedApi")
     public Integer getEventImage(Context context, String eventName) {
         // Assuming that the image resource IDs in res/drawable have names corresponding to event names
         String imageName = name.toLowerCase().replace(" ", "_"); // Replace spaces with underscores

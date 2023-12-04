@@ -10,43 +10,48 @@
 
     <LinearLayout
         android:layout_width="409dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:layout_marginEnd="5dp"
-        android:background="@null"
+        android:layout_height="200dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="275dp"
-            android:layout_marginBottom="10dp">
+            android:layout_width="350dp"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/rounded_background_events"
+            android:textAlignment="center">
 
             <ImageView
                 android:id="@+id/imageView"
-                android:layout_width="140dp"
-                android:layout_height="140dp"
-
-                android:src="@drawable/electric_castle"
+                android:layout_width="85dp"
+                android:layout_height="85dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginBottom="40dp"
                 android:padding="5dp"
                 android:scaleType="centerCrop"
+                android:src="@drawable/electric_castle"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/linearLayout"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.166" />
 
             <LinearLayout
                 android:id="@+id/linearLayout"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_marginStart="180dp"
-                android:layout_marginTop="65dp"
-                android:layout_marginBottom="50dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="85dp"
                 android:orientation="vertical"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imageView"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.0">
 
@@ -60,14 +65,16 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Nume festival" />
+                        android:text="Nume festival"
+                        android:textSize="13sp" />
 
                     <TextView
                         android:id="@+id/textView"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="TextView" />
+                        android:text="TextView"
+                        android:textSize="13sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -80,14 +87,16 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Descriere" />
+                        android:text="Descriere"
+                        android:textSize="13sp" />
 
                     <TextView
                         android:id="@+id/textView4"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="TextView" />
+                        android:text="TextView"
+                        android:textSize="13sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -100,14 +109,16 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Start Date" />
+                        android:text="Start Date"
+                        android:textSize="13sp" />
 
                     <TextView
                         android:id="@+id/textView20"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="TextView" />
+                        android:text="TextView"
+                        android:textSize="13sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -120,14 +131,16 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="End Date" />
+                        android:text="End Date"
+                        android:textSize="13sp" />
 
                     <TextView
                         android:id="@+id/textView23"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="TextView" />
+                        android:text="TextView"
+                        android:textSize="13sp" />
                 </LinearLayout>
 
             </LinearLayout>
@@ -140,8 +153,11 @@
                 android:text="@string/buy"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.498"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintHorizontal_bias="0.438"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+                app:layout_constraintVertical_bias="0.761" />
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </LinearLayout>

@@ -34,6 +34,7 @@ public class OrderActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order);
 
+        this.setTitle("Orders");
         getOrders();
 
     }
@@ -57,7 +58,7 @@ public class OrderActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<List<OrderDto>> call, Throwable t) {
-                Log.d("call", "Failed: " + t.toString());
+                Log.d("Orders call", "Failed: " + t.toString());
             }
         });
     }

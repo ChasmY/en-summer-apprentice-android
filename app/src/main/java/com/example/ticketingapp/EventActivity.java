@@ -58,7 +58,7 @@ public class EventActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<List<EventDto>> call, Throwable t) {
-                Log.d("call", "Failed: " + t.toString());
+                Log.d("Events call", "Failed: " + t.toString());
             }
         });
     }
@@ -69,8 +69,6 @@ public class EventActivity extends AppCompatActivity {
         eventAdapter = new EventAdapter(this, events);
         recyclerView.setAdapter(eventAdapter);
     }
-
-
 
 }
 
