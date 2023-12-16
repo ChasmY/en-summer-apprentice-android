@@ -29,8 +29,8 @@ public class TicketCategory {
         this.price = price;
     }
 
-    public TicketCategory(String description, int price) {
-        this.description = description;
+    public TicketCategory(Integer ticketCategoryId, int price) {
+        this.ticketCategoryId = ticketCategoryId;
         this.price = price;
     }
 }

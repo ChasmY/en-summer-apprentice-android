@@ -16,15 +16,18 @@ public class EventViewHolder extends RecyclerView.ViewHolder {
     public Button buyButton;
     public ImageView eventImage;
 
+    public static CardView cardView;
+
 
     public EventViewHolder(@NonNull View itemView) {
         super(itemView);
+
         eventNameTextView = itemView.findViewById(R.id.textView);
         eventDescriptionTextView = itemView.findViewById(R.id.textView4);
         startDateTextView = itemView.findViewById(R.id.textView20);
         endDateTextView = itemView.findViewById(R.id.textView23);
         buyButton = itemView.findViewById(R.id.buyButton);
         eventImage = itemView.findViewById(R.id.imageView);
-
+        cardView = itemView.findViewById(R.id.cardView);
     }
 }

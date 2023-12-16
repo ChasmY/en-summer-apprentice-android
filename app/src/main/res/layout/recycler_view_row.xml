@@ -66,6 +66,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="Nume festival"
+                        android:textColor="@color/white"
                         android:textSize="13sp" />
 
                     <TextView
@@ -74,6 +75,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="TextView"
+                        android:textColor="@color/white"
                         android:textSize="13sp" />
                 </LinearLayout>
 
@@ -88,6 +90,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="Descriere"
+                        android:textColor="@color/white"
                         android:textSize="13sp" />
 
                     <TextView
@@ -96,6 +99,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="TextView"
+                        android:textColor="@color/white"
                         android:textSize="13sp" />
                 </LinearLayout>
 
@@ -110,6 +114,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="Start Date"
+                        android:textColor="@color/white"
                         android:textSize="13sp" />
 
                     <TextView
@@ -118,6 +123,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="TextView"
+                        android:textColor="@color/white"
                         android:textSize="13sp" />
                 </LinearLayout>
 
@@ -132,6 +138,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="End Date"
+                        android:textColor="@color/white"
                         android:textSize="13sp" />
 
                     <TextView
@@ -140,6 +147,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="TextView"
+                        android:textColor="@color/white"
                         android:textSize="13sp" />
                 </LinearLayout>
 

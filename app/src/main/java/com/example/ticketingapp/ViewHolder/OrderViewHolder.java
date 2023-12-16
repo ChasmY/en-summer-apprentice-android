@@ -23,5 +23,7 @@ public class OrderViewHolder extends  RecyclerView.ViewHolder {
         totalPrice = itemView.findViewById(R.id.textView8);
         orderedAt = itemView.findViewById(R.id.textView9);
 
+        deleteButton = itemView.findViewById(R.id.deleteButton);
+        modifyButton = itemView.findViewById(R.id.editButton);
     }
 }

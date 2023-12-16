@@ -5,16 +5,44 @@ import androidx.annotation.NonNull;
 import com.example.ticketingapp.Model.Customer;
 import com.example.ticketingapp.Model.TicketCategory;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
-public class OrderDto {
+public class OrderDto implements Serializable {
     private Customer customer;
     private String eventName;
     private int numberOfTickets;
     private double totalPrice;
     private String orderedAt;
     private TicketCategory ticketCategory;
+    private int orderId;
 
+
+    public OrderDto(Customer customer, String eventName, int numberOfTickets, double totalPrice, String orderedAt, TicketCategory ticketCategory, int orderId) {
+        this.customer = customer;
+        this.eventName = eventName;
+        this.numberOfTickets = numberOfTickets;
+        this.totalPrice = totalPrice;
+        this.orderedAt = orderedAt;
+        this.ticketCategory = ticketCategory;
+        this.orderId = orderId;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
+    public int getOrderId() {
+        return orderId;
+    }
+
+    public void setOrderId(int orderId) {
+        this.orderId = orderId;
+    }
 
     public int getNumberOfTickets() {
         return numberOfTickets;
@@ -62,17 +90,6 @@ public class OrderDto {
 
     public void setClientName(Customer clientName) {
         this.customer = clientName;
-    }
-
-    public OrderDto(){}
-
-    public OrderDto(Customer customer, String eventName, int numberOfTickets, int totalPrice, String orderedAt, TicketCategory ticketCategory) {
-        this.customer = customer;
-        this.eventName = eventName;
-        this.numberOfTickets = numberOfTickets;
-        this.totalPrice = totalPrice;
-        this.orderedAt = orderedAt;
-        this.ticketCategory = ticketCategory;
     }
 
     @NonNull

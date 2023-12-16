@@ -15,9 +15,8 @@ public class RetrofitService {
 
     public static Retrofit getEventApi() {
         if (retrofit == null) {
-            Gson gson = new GsonBuilder()
-                    .setLenient()
-                    .create();
+            Gson gson = new GsonBuilder().setLenient().create();
+
             OkHttpClient.Builder okHttpClient = new OkHttpClient.Builder();
 
             retrofit = new Retrofit.Builder()

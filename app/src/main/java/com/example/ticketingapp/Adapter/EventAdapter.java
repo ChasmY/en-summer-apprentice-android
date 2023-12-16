@@ -9,21 +9,23 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.TextView;
-
+import android.widget.Toast;
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.ticketingapp.Model.Dto.EventDto;
 import com.example.ticketingapp.R;
 import com.example.ticketingapp.ViewHolder.EventViewHolder;
+import com.example.ticketingapp.popUp.EventPopUp;
 
 import java.util.List;
 
 public class EventAdapter extends RecyclerView.Adapter<EventViewHolder> {
     Context context;
     private List<EventDto> eventList;
+
+    Integer eventId;
 
     public EventAdapter(Context context, List<EventDto> eventList) {
         this.context = context;
@@ -40,7 +42,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull EventViewHolder holder, @SuppressLint("ReciclerView") int position) {
+    public void onBindViewHolder(@NonNull EventViewHolder holder, @SuppressLint({"ReciclerView", "RecyclerView"}) int position) {
         EventDto event = eventList.get(position);
         Log.d("EventAdapterAdded", "Event name: " + event.getName());
 
@@ -56,9 +58,12 @@ public class EventAdapter extends RecyclerView.Adapter<EventViewHolder> {
         holder.buyButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showBuyDialog(event);
+                Toast.makeText(context, "" + eventList.get(position).getEventId(), Toast.LENGTH_SHORT).show();
+                eventId = eventList.get(position).getEventId();
+                popUp();
             }
         });
+
     }
 
     @Override
@@ -66,29 +71,10 @@ public class EventAdapter extends RecyclerView.Adapter<EventViewHolder> {
         return eventList.size();
     }
 
-    private void showBuyDialog(EventDto event) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(context);
-        View dialogView = LayoutInflater.from(context).inflate(R.layout.dialog_box, null);
-        builder.setView(dialogView);
-        AlertDialog alertDialog = builder.create();
 
-        Spinner dropdownSpinner = dialogView.findViewById(R.id.dialogDropDownSpinner);
-        EditText quantityInput = dialogView.findViewById(R.id.dialogNumberInput);
-        Button buyButton = dialogView.findViewById(R.id.buyButton);
-
-
-
-
-        buyButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String quantity = quantityInput.getText().toString();
-                alertDialog.dismiss();
-            }
-        });
-
-        alertDialog.show();
+    public void popUp(){
+            EventPopUp eventPopUp = new EventPopUp(this, eventId, eventList);
+            eventPopUp.show(((AppCompatActivity)context).getSupportFragmentManager(), "Dialog");
+        }
     }
 
-
-}

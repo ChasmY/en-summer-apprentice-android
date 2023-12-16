@@ -23,8 +23,8 @@ public interface ApiService {
     @GET("Order/GetAllOrders")
     Call<List<OrderDto>> getAllOrders();
 
-    @DELETE("Order/Delete")
-    Call<List<OrderDto>> deleteOrder(@Path("orderId") int orderId);
+    @DELETE("Order/Delete/{orderId}")
+    Call<Void> deleteOrder(@Path("orderId") Integer orderId);
 
     @PATCH("Order/OrderPatch")
     Call<Void> orderPatch(@Body OrderPatchDto orderDto);

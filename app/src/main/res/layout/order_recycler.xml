@@ -50,6 +50,7 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:text="@string/customer_name"
+                        android:textColor="@color/white"
                         android:textSize="13sp" />
 
                     <TextView
@@ -59,6 +60,7 @@
                         android:layout_weight="1"
                         android:text="@string/numeclient"
                         android:textAlignment="textEnd"
+                        android:textColor="@color/white"
                         android:textSize="13sp" />
                 </LinearLayout>
 
@@ -73,6 +75,8 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="@string/event_name"
+                        android:textColor="@color/white"
+
                         android:textSize="13sp" />
 
                     <TextView
@@ -82,6 +86,7 @@
                         android:layout_weight="1"
                         android:text="@string/events"
                         android:textAlignment="textEnd"
+                        android:textColor="@color/white"
                         android:textSize="13sp" />
                 </LinearLayout>
 
@@ -96,6 +101,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="@string/ticket_type"
+                        android:textColor="@color/white"
                         android:textSize="13sp" />
 
                     <TextView
@@ -104,6 +110,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/tickettype"
                         android:textAlignment="center"
+                        android:textColor="@color/white"
                         android:textSize="13sp" />
                 </LinearLayout>
 
@@ -118,6 +125,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="@string/numar_tichete"
+                        android:textColor="@color/white"
                         android:textSize="13sp" />
 
                     <TextView
@@ -126,6 +134,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/numberoftickets"
                         android:textAlignment="center"
+                        android:textColor="@color/white"
                         android:textSize="13sp" />
                 </LinearLayout>
 
@@ -140,6 +149,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="Total price"
+                        android:textColor="@color/white"
                         android:textSize="13sp" />
 
                     <TextView
@@ -147,6 +157,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="totalPrice"
+                        android:textColor="@color/white"
                         android:textAlignment="center"
                         android:textSize="13sp" />
                 </LinearLayout>
@@ -161,12 +172,14 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:textColor="@color/white"
                         android:text="@string/ordered" />
 
                     <TextView
                         android:id="@+id/textView9"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:textColor="@color/white"
                         android:text="@string/orderedat" />
                 </LinearLayout>
             </LinearLayout>

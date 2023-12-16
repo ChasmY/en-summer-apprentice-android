@@ -15,6 +15,15 @@ public class EventDto implements Serializable {
     private String description;
     private String startDate;
     private String endDate;
+
+    public List<TicketCategory> getTicketCategoryList() {
+        return ticketCategoryList;
+    }
+
+    public void setTicketCategoryList(List<TicketCategory> ticketCategoryList) {
+        this.ticketCategoryList = ticketCategoryList;
+    }
+
     private List<TicketCategory> ticketCategoryList;
     private Integer eventImage;
 
