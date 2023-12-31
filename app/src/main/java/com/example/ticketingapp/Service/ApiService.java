@@ -4,6 +4,7 @@ import com.example.ticketingapp.Model.Dto.EventDto;
 import com.example.ticketingapp.Model.Dto.OrderDto;
 import com.example.ticketingapp.Model.Dto.OrderPatchDto;
 import com.example.ticketingapp.Model.Dto.OrderPostDto;
+import com.example.ticketingapp.Model.TicketCategory;
 
 import java.util.List;
 
@@ -19,6 +20,9 @@ public interface ApiService {
 
     @GET("Event/GetAllEvents")
     Call<List<EventDto>> getAllEvents();
+
+    @GET("TicketCategory/GetAllTickets")
+    Call<List<TicketCategory>> getAllTickets();
 
     @GET("Order/GetAllOrders")
     Call<List<OrderDto>> getAllOrders();

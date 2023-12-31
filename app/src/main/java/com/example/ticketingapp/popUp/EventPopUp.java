@@ -27,6 +27,7 @@ import com.example.ticketingapp.Service.ApiService;
 import com.example.ticketingapp.Service.RetrofitService;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -35,12 +36,14 @@ import retrofit2.Response;
 
 public class EventPopUp extends DialogFragment {
 
-    ApiService apiService;
+    ApiService apiService = RetrofitService.getEventApi().create(ApiService.class);;
     EventAdapter eventAdapter;
     Spinner dropdownSpinner;
     String ticketDescription;
 
     List<EventDto> eventList;
+
+    ArrayList<TicketCategory> ticketCategoryList = new ArrayList<>();
 
     int ticketCategoryId;
     int eventId;
@@ -51,12 +54,38 @@ public class EventPopUp extends DialogFragment {
         this.eventList = eventList;
     }
 
+    public void getTickets(){
+        Call<List<TicketCategory>> callTickets = apiService.getAllTickets();
+        callTickets.enqueue(new Callback<List<TicketCategory>>() {
+            @Override
+            public void onResponse(Call<List<TicketCategory>> call, Response<List<TicketCategory>> response) {
+                if(response.isSuccessful()){
+                    Log.d("GetTickets", "Status code: " + response.code());
+                    if(response.body() != null) {
+
+                        Log.d("breakpoint", "breakpoint");
+                        Log.d("TicketCategory", "ticketCategory" + response.body());
+                        Log.d("breakpoint", "breakpoint");
+                        ticketCategoryList.addAll(response.body());
+                    }
+                }
+                else{
+                    Log.d("call", "Status code: " + response.code());
+                }
+            }
+            @Override
+            public void onFailure(Call<List<TicketCategory>> call, Throwable t) {
+                Log.d("GetTickets", "Patch failed " + t.toString());
+            }
+        });
+    }
     @NonNull
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState){
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         LayoutInflater layoutInflater = getActivity().getLayoutInflater();
         View view = layoutInflater.inflate(R.layout.event_dialog_box, null);
+        getTickets();
 
         dropdownSpinner = view.findViewById(R.id.dialogDropDownSpinner);
         ArrayAdapter<CharSequence> spinnerAdapter = ArrayAdapter.createFromResource(getContext(),
@@ -87,9 +116,11 @@ public class EventPopUp extends DialogFragment {
                     public void onClick(DialogInterface dialogInterface, int i) {
                         int nrTickets = Integer.parseInt(nrTick.getText().toString());
 
-                        OrderPostDto orderPostDto = new OrderPostDto(3, ticketCategoryId, nrTickets);
+                        TicketCategory ticket = getTicket(ticketDescription, eventId);
+                        Log.d("Ticket obtinut", "Ticket" + ticket.toString());
+                        ticketCategoryId = ticket.getTicketCategoryId();
+                        OrderPostDto orderPostDto = new OrderPostDto(5, ticketCategoryId, nrTickets);
                         Log.d("Order Post", "order is: " + orderPostDto.toString() + eventId    );
-                        getTicketId(ticketDescription, eventId);
                         placeOrder(orderPostDto);
                     }
                 });
@@ -105,8 +136,8 @@ public class EventPopUp extends DialogFragment {
             @SuppressLint("NotifyDataSetChanged")
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
-                Log.d("call", "Status code: " + response.code());
-                Log.d("call", "Post sucesfull");
+                Log.d("EventCall", "Status code: " + response.code());
+                Log.d("EventCcall", "Post sucesfull");
                 eventAdapter.notifyDataSetChanged();
             }
             @Override
@@ -117,14 +148,15 @@ public class EventPopUp extends DialogFragment {
         });
     }
 
-    public int getTicketId(String ticketDescription, int eventId){
-        for(int i = 0; i<eventAdapter.getItemCount(); i ++){
-            if(eventList.get(i).getEventId().equals(eventId)){
-                eventList.get(i).getTicketCategoryList();
-                Log.d("Ticket List" , "tickets list" + eventList.get(i).getTicketCategoryList());
+    public TicketCategory getTicket(String ticketDescription, int eventId){
+
+        for(TicketCategory ticket: ticketCategoryList){
+            if(ticket.getEvent().getEventId() == eventId && ticket.getDescription().equals(ticketDescription)) {
+                Log.d("getTicket", "Ticket: " + ticket.toString() + " " + eventId + " "+ ticket.getTicketCategoryId());
+                return ticket;
             }
         }
-        return 0;
+        return null;
     }
 
 }

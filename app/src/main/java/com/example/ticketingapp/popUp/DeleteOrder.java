@@ -73,15 +73,20 @@ public class DeleteOrder extends DialogFragment {
             @SuppressLint("NotifyDataSetChanged")
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
-                Log.d("call", "Status code: " + response.code());
-                for(int i = 0; i<orderList.size(); i++){
-                    if(orderList.get(i).getOrderId() == orderId){
-                        orderList.remove(i);
-                        break;
+                if(response.isSuccessful()) {
+                    Log.d("call", "Status code: " + response.code());
+                    for (int i = 0; i < orderList.size(); i++) {
+                        if (orderList.get(i).getOrderId() == orderId) {
+                            orderList.remove(i);
+                            break;
+                        }
                     }
+                    Log.d("call", "Delete succesfull");
+                    orderAdapter.notifyDataSetChanged();
                 }
-                Log.d("call", "Delete succesfull");
-                orderAdapter.notifyDataSetChanged();
+                else {
+                    Log.d("call", "Status code" + response.code());
+                }
             }
 
             @Override

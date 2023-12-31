@@ -12,13 +12,14 @@ public class OrderDto implements Serializable {
     private Customer customer;
     private String eventName;
     private int numberOfTickets;
-    private double totalPrice;
+    private int totalPrice;
     private String orderedAt;
     private TicketCategory ticketCategory;
     private int orderId;
+    private int eventId;
 
 
-    public OrderDto(Customer customer, String eventName, int numberOfTickets, double totalPrice, String orderedAt, TicketCategory ticketCategory, int orderId) {
+    public OrderDto(Customer customer, String eventName, int numberOfTickets, int totalPrice, String orderedAt, TicketCategory ticketCategory, int orderId, int eventId) {
         this.customer = customer;
         this.eventName = eventName;
         this.numberOfTickets = numberOfTickets;
@@ -26,6 +27,7 @@ public class OrderDto implements Serializable {
         this.orderedAt = orderedAt;
         this.ticketCategory = ticketCategory;
         this.orderId = orderId;
+        this.eventId = eventId;
     }
 
     public Customer getCustomer() {
@@ -52,11 +54,11 @@ public class OrderDto implements Serializable {
         this.numberOfTickets = numberOfTickets;
     }
 
-    public double getTotalPrice() {
+    public int getTotalPrice() {
         return totalPrice;
     }
 
-    public void setTotalPrice(double totalPrice) {
+    public void setTotalPrice(int totalPrice) {
         this.totalPrice = totalPrice;
     }
 
@@ -90,6 +92,14 @@ public class OrderDto implements Serializable {
 
     public void setClientName(Customer clientName) {
         this.customer = clientName;
+    }
+
+    public int getEventId() {
+        return eventId;
+    }
+
+    public void setEventId(int eventId) {
+        this.eventId = eventId;
     }
 
     @NonNull

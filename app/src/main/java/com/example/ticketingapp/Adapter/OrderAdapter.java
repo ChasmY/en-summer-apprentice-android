@@ -30,7 +30,6 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderViewHolder>{
 
     Integer orderId = 0;
 
-
     public OrderAdapter(Context context, List<OrderDto> orders) {
         this.context = context;
         this.orders = orders;

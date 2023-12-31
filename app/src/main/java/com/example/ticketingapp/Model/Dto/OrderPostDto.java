@@ -2,7 +2,6 @@ package com.example.ticketingapp.Model.Dto;
 
 public class OrderPostDto {
     int CustomerId;
-
     int ticketCategoryId;
     int numberOfTickets;
 
