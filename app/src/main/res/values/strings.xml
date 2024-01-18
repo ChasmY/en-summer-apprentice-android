@@ -17,4 +17,6 @@
     <string name="orderedat">orderedAt</string>
     <string name="delete">Delete</string>
     <string name="edit">Edit</string>
+    <string name="sign_out">Sign Out</string>
+    <string name="google_maps">Google Maps</string>
 </resources>

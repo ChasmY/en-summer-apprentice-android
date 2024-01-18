@@ -8,4 +8,9 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="background">#3F4349</color>
+
+
+
+    <color name="login_background">#C3C3C5</color>
+    <color name="login_Welcome">#7d2a70</color>
 </resources>

@@ -1,9 +1,12 @@
 package com.example.ticketingapp.Service;
 
+import com.example.ticketingapp.Model.Customer;
+import com.example.ticketingapp.Model.Dto.CustomerPost;
 import com.example.ticketingapp.Model.Dto.EventDto;
 import com.example.ticketingapp.Model.Dto.OrderDto;
 import com.example.ticketingapp.Model.Dto.OrderPatchDto;
 import com.example.ticketingapp.Model.Dto.OrderPostDto;
+import com.example.ticketingapp.Model.Dto.VenueDto;
 import com.example.ticketingapp.Model.TicketCategory;
 
 import java.util.List;
@@ -27,6 +30,12 @@ public interface ApiService {
     @GET("Order/GetAllOrders")
     Call<List<OrderDto>> getAllOrders();
 
+    @GET("Customer/GetAllCustomers")
+    Call<List<Customer>> getAllCustomers();
+
+    @GET("Customer/GetById/{customerId}")
+    Call<Customer> getCustomerById(@Path("customerId") Integer customerId);
+
     @DELETE("Order/Delete/{orderId}")
     Call<Void> deleteOrder(@Path("orderId") Integer orderId);
 
@@ -35,4 +44,10 @@ public interface ApiService {
 
     @POST("Order/OrderPost")
     Call<Void> orderPost(@Body OrderPostDto orderPostDto);
+
+    @POST("Customer/CustomerPost")
+    Call<Void> customerPost(@Body CustomerPost customerPost);
+
+    @GET("Venue/GetAllVenues_AllCoordinates")
+    Call<List<VenueDto>> getAllVenues_AllCoordinates();
 }

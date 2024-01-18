@@ -1,4 +1,4 @@
-package com.example.ticketingapp;
+package com.example.ticketingapp.Activity;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.ticketingapp.Adapter.EventAdapter;
 import com.example.ticketingapp.Model.Dto.EventDto;
+import com.example.ticketingapp.R;
 import com.example.ticketingapp.Service.ApiService;
 import com.example.ticketingapp.Service.RetrofitService;
 
@@ -27,6 +28,7 @@ public class EventActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private EventAdapter eventAdapter;
     private ApiService apiService;
+    private int customerId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +44,9 @@ public class EventActivity extends AppCompatActivity {
 
     public void getEvents(){
         apiService = RetrofitService.getEventApi().create(ApiService.class);
+        customerId = getIntent().getIntExtra("customerId", -1);
+
+
         Call<List<EventDto>> call = apiService.getAllEvents();
         call.enqueue(new Callback<List<EventDto>>() {
             @SuppressLint("NotifyDataSetChanged")
@@ -66,7 +71,7 @@ public class EventActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.myRecyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        eventAdapter = new EventAdapter(this, events);
+        eventAdapter = new EventAdapter(this, events, customerId);
         recyclerView.setAdapter(eventAdapter);
     }
 

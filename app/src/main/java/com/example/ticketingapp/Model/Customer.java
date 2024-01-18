@@ -6,6 +6,24 @@ public class Customer {
     private String name;
     private String email;
 
+    private String password;
+
+    public void setCustomerId(int customerId) {
+        this.customerId = customerId;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     public int getClientId(){
         return customerId;
     }
@@ -17,10 +35,14 @@ public class Customer {
         return email;
     }
 
-    public Customer(int customerId, String name, String clientEmail){
+    public String getPassword() { return password;}
+
+
+    public Customer(int customerId, String name, String clientEmail, String password){
         this.customerId = customerId;
         this.name = name;
         this.email = clientEmail;
+        this.password = password;
     }
 
 

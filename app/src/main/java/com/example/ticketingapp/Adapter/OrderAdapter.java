@@ -20,6 +20,8 @@ import com.example.ticketingapp.ViewHolder.OrderViewHolder;
 import com.example.ticketingapp.popUp.DeleteOrder;
 import com.example.ticketingapp.popUp.ModifyOrderPopUp;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 public class OrderAdapter extends RecyclerView.Adapter<OrderViewHolder>{
@@ -58,7 +60,18 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderViewHolder>{
         holder.ticketType.setText(order.getTicketCategory().getDescription());
         holder.numberOfTickets.setText(String.valueOf(order.getNumberOfTickets()));
         holder.totalPrice.setText(String.valueOf(order.getTotalPrice()));
-        holder.orderedAt.setText(order.getOrderedAt());
+        @SuppressLint("SimpleDateFormat") SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+        try{
+            Date orderDate = dateFormat.parse(order.getOrderedAt());
+
+            SimpleDateFormat displayFormat = new SimpleDateFormat("dd/MM/yyy");
+            String formattedOrderDate = displayFormat.format(orderDate);
+            holder.orderedAt.setText(formattedOrderDate);
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
 
         holder.modifyButton.setOnClickListener(new View.OnClickListener() {
             @Override

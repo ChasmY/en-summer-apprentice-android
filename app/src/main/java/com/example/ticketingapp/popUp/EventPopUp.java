@@ -19,7 +19,6 @@ import androidx.fragment.app.DialogFragment;
 
 import com.example.ticketingapp.Adapter.EventAdapter;
 import com.example.ticketingapp.Model.Dto.EventDto;
-import com.example.ticketingapp.Model.Dto.OrderDto;
 import com.example.ticketingapp.Model.Dto.OrderPostDto;
 import com.example.ticketingapp.Model.TicketCategory;
 import com.example.ticketingapp.R;
@@ -36,22 +35,24 @@ import retrofit2.Response;
 
 public class EventPopUp extends DialogFragment {
 
-    ApiService apiService = RetrofitService.getEventApi().create(ApiService.class);;
-    EventAdapter eventAdapter;
-    Spinner dropdownSpinner;
-    String ticketDescription;
+    private ApiService apiService = RetrofitService.getEventApi().create(ApiService.class);;
+    private EventAdapter eventAdapter;
+    private Spinner dropdownSpinner;
+    private String ticketDescription;
 
-    List<EventDto> eventList;
+    private List<EventDto> eventList;
 
-    ArrayList<TicketCategory> ticketCategoryList = new ArrayList<>();
+    private ArrayList<TicketCategory> ticketCategoryList = new ArrayList<>();
 
-    int ticketCategoryId;
-    int eventId;
+    private int ticketCategoryId;
+    private int eventId;
+    private int customerId;
 
-    public EventPopUp(EventAdapter eventAdapter, int eventId, List<EventDto> eventList){
+    public EventPopUp(EventAdapter eventAdapter, int eventId, List<EventDto> eventList, int customerId){
         this.eventAdapter = eventAdapter;
         this.eventId = eventId;
         this.eventList = eventList;
+        this.customerId = customerId;
     }
 
     public void getTickets(){
@@ -62,10 +63,6 @@ public class EventPopUp extends DialogFragment {
                 if(response.isSuccessful()){
                     Log.d("GetTickets", "Status code: " + response.code());
                     if(response.body() != null) {
-
-                        Log.d("breakpoint", "breakpoint");
-                        Log.d("TicketCategory", "ticketCategory" + response.body());
-                        Log.d("breakpoint", "breakpoint");
                         ticketCategoryList.addAll(response.body());
                     }
                 }
@@ -119,7 +116,7 @@ public class EventPopUp extends DialogFragment {
                         TicketCategory ticket = getTicket(ticketDescription, eventId);
                         Log.d("Ticket obtinut", "Ticket" + ticket.toString());
                         ticketCategoryId = ticket.getTicketCategoryId();
-                        OrderPostDto orderPostDto = new OrderPostDto(5, ticketCategoryId, nrTickets);
+                        OrderPostDto orderPostDto = new OrderPostDto(customerId, ticketCategoryId, nrTickets);
                         Log.d("Order Post", "order is: " + orderPostDto.toString() + eventId    );
                         placeOrder(orderPostDto);
                     }
@@ -130,6 +127,7 @@ public class EventPopUp extends DialogFragment {
     public void placeOrder(OrderPostDto orderPostDto){
         apiService = RetrofitService.getEventApi().create(ApiService.class);
         Log.d("api call", "" + apiService.toString());
+
         Call<Void> call = apiService.orderPost(orderPostDto);
 
         call.enqueue(new Callback<Void>() {

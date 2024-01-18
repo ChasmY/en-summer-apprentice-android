@@ -1,4 +1,4 @@
-package com.example.ticketingapp;
+package com.example.ticketingapp.Activity;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.ticketingapp.Adapter.OrderAdapter;
 import com.example.ticketingapp.Model.Dto.OrderDto;
+import com.example.ticketingapp.R;
 import com.example.ticketingapp.Service.ApiService;
 import com.example.ticketingapp.Service.RetrofitService;
 
@@ -27,6 +28,7 @@ public class OrderActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private OrderAdapter orderAdapter;
     private ApiService apiService;
+    private int customerId;
 
 
     @Override
@@ -40,7 +42,10 @@ public class OrderActivity extends AppCompatActivity {
     }
 
     public void getOrders(){
+
         apiService = RetrofitService.getEventApi().create(ApiService.class);
+        customerId = getIntent().getIntExtra("customerId", -1);
+
         Call<List<OrderDto>> call = apiService.getAllOrders();
         call.enqueue(new Callback<List<OrderDto>>() {
             @SuppressLint("NotifyDataSetChanged")
@@ -51,6 +56,7 @@ public class OrderActivity extends AppCompatActivity {
                 orders.clear();
                 if(response.body() != null){
                     orders.addAll(response.body());
+                    orders.removeIf(order -> order.getClient().getClientId() != customerId);
                 }
                 setRecyclerView();
                 orderAdapter.notifyDataSetChanged();
